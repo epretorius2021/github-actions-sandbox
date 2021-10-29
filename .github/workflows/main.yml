@@ -3,12 +3,12 @@
 name: CI
 
 # Controls when the workflow will run
-on:
+on: [push]
   # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+#  push:
+#    branches: [ master ]
+#  pull_request:
+#    branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -34,16 +34,27 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-      
+
       - name: Set up node.
         uses: actions/setup-node@v2
         with:
           node-vesion: 14
-          
+
       - run: node --version
-      
-      - name: Run tests.
-        run: | 
-          npm install
-          npm run test
-        
+
+#      - name: Run tests.
+#        run: |
+#          npm install
+#          npm run test
+
+      - name: Run num increase in readme file.
+        run: node index.js
+
+      - name: Commmit num increase
+        run |
+          git config user.name "Alex's mom"
+          git config user.email "alexmom@alexmom.com"
+          git add README.md
+          git commit -m "Updated README."
+          git push
+
