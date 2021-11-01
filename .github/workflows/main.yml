@@ -51,7 +51,7 @@ jobs:
         run: node index.js
 
       - name: Commmit num increase
-        run |
+        run: |
           git config user.name "Alex's mom"
           git config user.email "alexmom@alexmom.com"
           git add README.md
